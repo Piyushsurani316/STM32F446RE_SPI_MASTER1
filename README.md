@@ -1,4 +1,4 @@
-# 🚀 STM32F446RE SPI Communication (Slave)
+# 🚀 STM32F446RE SPI Communication (Master + Slave)
 
 ![C](https://img.shields.io/badge/Language-C-blue.svg)
 ![STM32CubeIDE](https://img.shields.io/badge/IDE-STM32CubeIDE-darkgreen.svg)
@@ -10,13 +10,12 @@
 
 ## 📌 Project Overview
 
-This project demonstrates the **SPI (Serial Peripheral Interface) Slave implementation** using STM32F446RE.
+This project demonstrates **SPI (Serial Peripheral Interface) communication** between two STM32 boards:
 
-- 🔵 **SPI Slave** → STM32F446RE (This Repository)  
-- 🟢 **SPI Master** → External STM32 Board  
+- 🟢 **SPI Master** → STM32F446RE (This Repository)
+- 🔵 **SPI Slave** → External STM32 Board  
 
-The slave waits for the master to transmit:
-
+The master periodically transmits the message:  
 
 # ⚙️ SPI Configuration Details
 
@@ -62,18 +61,14 @@ SPI (Serial Peripheral Interface) is a **synchronous full-duplex communication p
 ---
 
 
-If the received data matches exactly, the slave:
 
-✅ Turns ON LED (PA9)  
-✅ Waits 50ms  
-✅ Turns OFF LED  
 
 ---
 
-## 🔗 Master Project Repository
+## 🔗 Slave Project Repository
 
-👉 SPI Master Project:  
-https://github.com/Piyushsurani316/STM32F446RE_SPI_MASTER1
+👉 SPI Slave Project:  
+https://github.com/Piyushsurani316/STM32F446RE_SPI_SLAVE1
 
 ---
 
@@ -84,9 +79,16 @@ https://github.com/Piyushsurani316/STM32F446RE_SPI_MASTER1
 - **Clock Source:** HSI (16 MHz Internal Oscillator)  
 - **Development Tool:** STM32CubeIDE  
 - **Programming Language:** C  
-- **Framework:** STM32 HAL  
 
 ---
 
+# 📡 SPI Protocol Overview
 
+SPI (Serial Peripheral Interface) is a **full-duplex synchronous communication protocol** using:
 
+| Signal | Description |
+|--------|------------|
+| MOSI   | Master Out Slave In |
+| MISO   | Master In Slave Out |
+| SCK    | Serial Clock |
+| NSS    | Slave Select (Chip Select) |
